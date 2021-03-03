@@ -3,9 +3,20 @@
 from datetime import datetime
 
 
+class pending_transaction:
+    """
+        Represents the yet to be accepted
+        transactions
+    """
+
+    def __init__(self, pending_transaction):
+        self.pending_transaction = []
+
+
 class new_transaction:
 
-    """ Represents the transactions where
+    """
+        Represents the transactions where
         sender is the the sender’s public key
         recipient is the recipient’s public key
         amount is the amount of coins sent
@@ -17,4 +28,5 @@ class new_transaction:
         self.recipient = recipient
         self.amount = amount
         self.time = str(datetime.now())
+        self.pending_transaction.append()
         return self.prev['index'] + 1
