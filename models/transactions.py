@@ -3,17 +3,8 @@
 from datetime import datetime
 
 
-class pending_transaction:
-    """
-        Represents the yet to be accepted
-        transactions
-    """
-
-    def __init__(self, pending_transaction):
-        self.pending_transaction = []
-
-
 class new_transaction:
+    pending_transaction = []
 
     """
         Represents the transactions where
