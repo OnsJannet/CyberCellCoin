@@ -8,7 +8,7 @@ class new_transaction:
     """ Represents the transactions where
         sender is the the sender’s public key
         recipient is the recipient’s public key
-        amount is the amount of coins send
+        amount is the amount of coins sent
         time is the time of the transaction
     """
 
