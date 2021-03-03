@@ -2,9 +2,10 @@
 from block import Block
 from chain import Chain
 ch = Chain()
-a = Block("1" ,"A value")
-b = Block("2" ,"B value")
-c = Block("3" ,"C value")
+a = Block("A value")
+b = Block("B value")
+c = Block("C value")
 ch.add_block(a)
 ch.add_block(b)
+ch.add_block(c)
 print(ch.dict_chain())
