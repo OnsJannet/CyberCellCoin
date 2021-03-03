@@ -1,6 +1,6 @@
 # CyberCellCoin Overview
-CyberCellCoin is a project wriiten in Python and implemented only for educational
-prupose a simple crypto-currency and blockchain network 
+CyberCellCoin is a project writen in Python and implemented only for educational
+prupose a simple crypto-currency and blockchain network (please don't use it in a production envirement !)
 
 # Install Software Packages
 please use the following command to install Python Packages before you start
