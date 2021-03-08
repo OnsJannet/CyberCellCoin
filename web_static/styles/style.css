@@ -1,0 +1,52 @@
+
+
+nav{
+    width: 100%;
+
+}
+
+li{
+    list-style-type: none;
+    position: relative;
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+    padding: 2vw;
+    font-family: sofia-pro,Roboto,Helvetica,Arial,sans-serif;
+    color: grey;
+}
+
+a:hover{
+    color: goldenrod;
+}
+
+ul{
+    float: right;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin: 0 2vw;
+    font-size: 2.5vh;
+}
+
+div {
+    margin: 0;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 10vw;
+  }
+
+footer{
+    position:absolute;
+    bottom:0; 
+    width:100%;
+    padding-top:50px;
+    height:50px;
+    font-family: sofia-pro,Roboto,Helvetica,Arial,sans-serif;
+    text-align: center;
+}
