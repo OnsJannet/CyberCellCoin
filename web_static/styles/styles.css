@@ -63,27 +63,39 @@ body header .navbar li a:hover {
   color: #cc0023;
 }
 
-body .introduction {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  padding: 40px 60px;
+body .presentation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-body .introduction h1 {
+body .presentation .introduction {
+  display: -ms-grid;
+  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 40px 60px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .presentation .introduction h1 {
   font-family: "Roboto", sans-serif;
   font-size: 40px;
 }
 
-body .introduction p {
+body .presentation .introduction p {
   text-align: start;
   color: white;
   margin: 50px 0px;
   line-height: 1.6;
+  text-align: justify;
+  width: 60%;
 }
 
-body .introduction button {
+body .presentation .introduction button {
   padding: 10px 30px;
   background: transparent;
   border: 2px solid white;
@@ -91,7 +103,8 @@ body .introduction button {
   border-radius: 20px;
 }
 
-body .introduction button:hover {
+body .presentation .introduction button:hover {
   color: #cc0023;
+  border: solid #cc0023;
 }
 /*# sourceMappingURL=styles.css.map */

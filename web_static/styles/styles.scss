@@ -1,7 +1,7 @@
 /*-- Variables --*/
 $textFont: 'Roboto', sans-serif;
 $textColor: white;
-$h1FontSize: 40px;
+$h1FontSize: 35px;
 $pSpacing: 1.6;
 
 * {
@@ -13,7 +13,7 @@ $pSpacing: 1.6;
 /*--Body--*/
 
 body {
-    background-color: #040024;
+    background-color: #080023;
     overflow: hidden;
     color: $textColor;
     font-family: $textFont;
@@ -61,36 +61,45 @@ body {
     }
 
     /*-- Intoduction Section --*/
-    .introduction {
+
+    .presentation{
+        display: flex;
+
+        .introduction {
 
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        display: flex;
         padding: 40px 60px;
+        align-items: center;
 
-        h1{
-            font-family: $textFont;
-            font-size: $h1FontSize;
-        }
-
-        p{
-            text-align: start;
-            color: $textColor;
-            margin: 50px 0px;
-            line-height: $pSpacing;
-        }
-
-        button{
-            padding: 10px 30px;
-            background: transparent;
-            border: 2px solid white;
-            color: $textColor;
-            border-radius: 20px;
-            &:hover{
-                color: #cc0023;
+            h1{
+                font-family: $textFont;
+                font-size: $h1FontSize;
             }
 
+             p{
+                text-align: start;
+                color: $textColor;
+                margin: 50px 0px;
+                line-height: $pSpacing;
+                text-align: justify;
+                width: 60%;
+            }
+
+            button{
+                padding: 10px 30px;
+                background: transparent;
+                border: 2px solid white;
+                color: $textColor;
+                border-radius: 20px;
+                &:hover{
+                    color: #cc0023;
+                    border: solid #cc0023;
+                }
+
+
+            }
 
         }
-
     }
 }
