@@ -29,11 +29,18 @@ body header {
   padding: 30px 60px;
 }
 
-body header lable.logo {
+body header div.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   font-family: "Roboto", sans-serif;
   font-size: 30px;
   font-weight: bold;
   font-style: italic;
+}
+
+body header .navbar {
+  display: inline;
 }
 
 body header ul.navbar {
@@ -82,5 +89,9 @@ body .introduction button {
   border: 2px solid white;
   color: white;
   border-radius: 20px;
+}
+
+body .introduction button:hover {
+  color: #cc0023;
 }
 /*# sourceMappingURL=styles.css.map */

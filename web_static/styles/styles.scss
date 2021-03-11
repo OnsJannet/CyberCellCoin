@@ -27,11 +27,18 @@ body {
         align-items: center;
         padding: 30px 60px;
 
-        lable.logo{
+
+        div.logo{
+            display: flex;
             font-family: $textFont;
             font-size: 30px;
             font-weight: bold;
             font-style: italic;
+        }
+
+        .navbar{
+            display:inline;
+          
         }
 
         ul.navbar{
@@ -78,6 +85,10 @@ body {
             border: 2px solid white;
             color: $textColor;
             border-radius: 20px;
+            &:hover{
+                color: #cc0023;
+            }
+
 
         }
 
