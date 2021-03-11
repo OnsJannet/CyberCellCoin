@@ -1,0 +1,85 @@
+/*-- Variables --*/
+$textFont: 'Roboto', sans-serif;
+$textColor: white;
+$h1FontSize: 40px;
+$pSpacing: 1.6;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*--Body--*/
+
+body {
+    background-color: #040024;
+    overflow: hidden;
+    color: $textColor;
+    font-family: $textFont;
+
+    /*--Header--*/
+
+    header{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 60px;
+
+        lable.logo{
+            font-family: $textFont;
+            font-size: 30px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        ul.navbar{
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar li{
+            margin-right: 50px;
+        }
+
+        .navbar a {
+            color: $textColor;
+            font-family: $textFont;
+        }
+
+        .navbar li a:hover{
+            color: #cc0023;
+        }
+    }
+
+    /*-- Intoduction Section --*/
+    .introduction {
+
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        padding: 40px 60px;
+
+        h1{
+            font-family: $textFont;
+            font-size: $h1FontSize;
+        }
+
+        p{
+            text-align: start;
+            color: $textColor;
+            margin: 50px 0px;
+            line-height: $pSpacing;
+        }
+
+        button{
+            padding: 10px 30px;
+            background: transparent;
+            border: 2px solid white;
+            color: $textColor;
+            border-radius: 20px;
+
+        }
+
+    }
+}
