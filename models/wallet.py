@@ -11,7 +11,7 @@ class Wallet:
         self.private_key = None
         self.public_key = None
 
-    def generate_RSA(bits=2048):
+    def generate_RSA(self, bits=2048):
         '''
     Generate an RSA keypair with an exponent of 65537 in PEM format
     param: bits The key length in bits
