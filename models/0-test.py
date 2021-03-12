@@ -4,12 +4,13 @@ from chain import BlockChain
 
 blockchain = BlockChain()
 
-print("***Mining CyberCellCoin about to start***")
+print("Blockchain Records Status :")
 print(blockchain.chain)
 
 last_block = blockchain.latest_block
 last_proof_nonce = last_block.proof_nonce
 proof_nonce = blockchain.proof_of_work(last_proof_nonce)
+print("***Mining CyberCellCoin about to start***")
 
 blockchain.add_transaction(
     sender="Ons_Jannet",  #it implies that this node has created a new block
@@ -19,9 +20,9 @@ blockchain.add_transaction(
 
 last_hash = last_block.calculate_hash
 block = blockchain.construct_block(proof_nonce, last_hash)
+print(blockchain.chain)
 
 print("***Transaction seccessfully executed***")
-print(blockchain.chain)
 print("===============================================")
 print("let's execute another transaction !")
 print("===============================================")
@@ -33,8 +34,8 @@ blockchain.add_transaction(
 )
 last_hash = last_block.calculate_hash
 block = blockchain.construct_block(proof_nonce, last_hash)
-print("***Transaction seccessfully executed***")
 print(blockchain.chain)
+print("***Transaction seccessfully executed***")
 
 print("===============================================")
 print("let's execute another transaction !")
@@ -47,6 +48,22 @@ blockchain.add_transaction(
 )
 last_hash = last_block.calculate_hash
 block = blockchain.construct_block(proof_nonce, last_hash)
+print(blockchain.chain)
+print("***Transaction seccessfully executed***")
+print(blockchain.chain)
+
+print("===============================================")
+print("let's execute another transaction !")
+print("===============================================")
+
+blockchain.add_transaction(
+    sender="Aymen_Haddaji",
+    recipient="Dali_Kaouech",
+    amount=20,
+)
+last_hash = last_block.calculate_hash
+block = blockchain.construct_block(proof_nonce, last_hash)
+print(blockchain.chain)
 print("***Transaction seccessfully executed***")
 print(blockchain.chain)
 
