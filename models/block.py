@@ -1,14 +1,46 @@
 #!/usr/bin/python3
 from datetime import datetime
+from hashlib import sha256
+
 
 class Block:
-    def __init__(self, value):
-        self.block = self.create_block(value)
 
-    def create_block(self, value):
-        block = {'time': str(datetime.now()),
-                 'value': value}
-        return block
+    def __init__(self, index, proof_nonce, prev_hash, data, timestamp=None):
+        """ 
+            Args :
+            self :  refers to the instance of the Block class,\
+                    making it possible to access the methods and attributes\
+                    associated with the class .
+            index : 
+                    keeps track of the position of the block within the blockchain .
+            proof_nonce :
+                    the number produced during the creation of a new block (Mining) .
+            prev_hash :
+                    refers to the hash of the previous block within the chain .
+            data :
+                    gives a record of all transactions completed (Ledger) .
+            timestamp :
+                    put a timestamp for the transactions .
+            """
+        
+        self.index = index
+        self.proof_nonce = proof_nonce
+        self.prev_hash = prev_hash
+        self.data = data
+        self.timestamp = str(datetime.now())
 
-    def dict_block(self):
-        return "###\ntime{}\nvalue{}\n###".format(self.block['time'],self.block['value'])
+    @property
+    def calculate_hash(self):
+        """
+        generate the hash of the blocks using the above values with the SHA-256 module .
+        """
+        block_of_string = "{}{}{}{}{}".format(self.index, self.proof_nonce,
+                                              self.prev_hash, self.data,
+                                              self.timestamp)
+
+        return sha256(block_of_string.encode()).hexdigest()
+
+    def __repr__(self):
+        return "{} - {} - {} - {} - {}".format(self.index, self.proof_nonce,
+                                               self.prev_hash, self.data,
+                                               self.timestamp)
