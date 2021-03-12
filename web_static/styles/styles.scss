@@ -1,5 +1,5 @@
 /*-- Variables --*/
-$textFont: 'Roboto', sans-serif;
+$textFont: 'Poppins', sans-serif;
 $textColor: white;
 $h1FontSize: 35px;
 $pSpacing: 1.6;
@@ -28,7 +28,7 @@ body {
         padding: 30px 60px;
 
 
-        div.logo{
+        .logo{
             display: flex;
             font-family: $textFont;
             font-size: 30px;
@@ -71,19 +71,22 @@ body {
         display: flex;
         padding: 40px 60px;
         align-items: center;
+        justify-content: center;
 
-            h1{
+             .introduction_title{
                 font-family: $textFont;
                 font-size: $h1FontSize;
             }
 
-             p{
+             .introduction_paragraph{
                 text-align: start;
                 color: $textColor;
                 margin: 50px 0px;
                 line-height: $pSpacing;
                 text-align: justify;
-                width: 60%;
+                width: 40%;
+                
+                
             }
 
             button{
