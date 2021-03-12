@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 from Crypto.PublicKey import RSA
 from hashlib import sha256
@@ -18,14 +19,14 @@ class Wallet:
     Return private key and public key
         '''
         new_key = RSA.generate(bits, e=65537) 
-        public_key = new_key.publickey().exportKey("PEM") 
-        private_key = new_key.exportKey("PEM") 
-        return private_key, public_key
+        self.public_key = new_key.publickey().exportKey("PEM") 
+        self.private_key = new_key.exportKey("PEM") 
+        return self.private_key, self.public_key
 
     def save_keys(self):
         if self.public_key != None and self.private_key != None:
             try:
-                with open('wallet-{}.txt'.format(self.user_id), mode='w') as f:
+                with open('wallet-{}.txt'.format(self.user_id), mode='wb') as f:
                     f.write(self.public_key)
                     f.write('\n')
                     f.write(self.private_key)
