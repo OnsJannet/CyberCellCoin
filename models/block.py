@@ -41,6 +41,6 @@ class Block:
         return sha256(block_of_string.encode()).hexdigest()
 
     def __repr__(self):
-        return "{} - {} - {} - {} - {}".format(self.index, self.proof_nonce,
+        return "Index : {}\n - Nonce : {}\n - Previous Hash : {}\n - TRANSACTION : {}\n - Time : {}\n".format(self.index, self.proof_nonce,
                                                self.prev_hash, self.data,
                                                self.timestamp)
