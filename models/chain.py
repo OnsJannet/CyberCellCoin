@@ -18,7 +18,9 @@ class BlockChain:
         """
         creating new blocks in the blockchain.
         Args :
-            
+            index represents the length of the blockchain
+            proof_nonce : the number stored when executed the pow operation.
+            prev_hash : last hash from the previous block
 
         """
         block = Block(
