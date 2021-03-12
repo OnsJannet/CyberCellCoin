@@ -29,7 +29,7 @@ class Wallet:
             try:
                 with open('wallet-{}.txt'.format(self.user_id), mode='wb') as f:
                     f.write(self.public_key)
-                    f.write('\n')
+                    f.write(bytes('\n', 'utf-8'))
                     f.write(self.private_key)
                 return True
             except (IOError, IndexError):
