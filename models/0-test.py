@@ -65,8 +65,6 @@ last_hash = last_block.calculate_hash
 block = blockchain.construct_block(proof_nonce, last_hash)
 print(blockchain.chain)
 print("***Transaction seccessfully executed***")
-print(blockchain.chain)
-
 print("###############################################\n")
 print("***Mining CyberCellCoin has been successful***")
 print("Blockchain Records Status :")
