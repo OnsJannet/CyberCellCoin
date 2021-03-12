@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 from block import Block
 from hashlib import sha256
-from transaction import Transaction
 
 class BlockChain:
 
