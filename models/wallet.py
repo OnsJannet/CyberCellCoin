@@ -7,9 +7,10 @@ from Crypto.Signature import PKCS1_v1_5
 
 class Wallet:
 
-    def __init__(self):
+    def __init__(self, user_id):
         self.private_key = None
         self.public_key = None
+        self.user_id = user_id
 
     def generate_RSA(self, bits=2048):
         '''
