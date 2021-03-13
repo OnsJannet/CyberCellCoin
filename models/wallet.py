@@ -2,10 +2,11 @@
 """ Wallet Modules that generates public private keys for each user """
 
 from Crypto.PublicKey import RSA
-from hashlib import sha256
+from Crypto.Hash import SHA256
 import binascii
 import secrets
 from Crypto.Signature import PKCS1_v1_5
+import Crypto.Random
 
 
 class Wallet:
@@ -15,16 +16,10 @@ class Wallet:
         self.public_key = None
         self.user_id = user_id
 
-    def generate_RSA(self, bits=2048):
-        '''
-        Generate an RSA keypair with an exponent of 65537 in PEM format
-        param: bits The key length in bits
-        Return private key and public key
-        '''
-        new_key = RSA.generate(bits, e=secrets.randbelow(2048))
-        self.public_key = new_key.publickey().exportKey("PEM")
-        self.private_key = new_key.exportKey("PEM")
-        return self.private_key, self.public_key
+    def generate_RSA(self):
+        private_key = RSA.generate(1024, Crypto.Random.new().read)
+        public_key = private_key.publickey()
+        return (binascii.hexlify(private_key.exportKey(format='DER')).decode('ascii'), binascii.hexlify(public_key.exportKey(format='DER')).decode('ascii'))
 
     def create_keys(self):
         private_key, public_key = self.generate_RSA()
@@ -32,11 +27,11 @@ class Wallet:
         self.public_key = public_key
 
     def save_keys(self):
-        if self.public_key is not None and self.private_key is not None:
+        if self.public_key != None and self.private_key != None:
             try:
-                with open('wallet-{}.txt'.format(self.user_id), mode='wb') as f:
+                with open('wallet-{}.txt'.format(self.user_id), mode='w') as f:
                     f.write(self.public_key)
-                    f.write(bytes('\n', 'utf-8'))
+                    f.write('\n')
                     f.write(self.private_key)
                 return True
             except (IOError, IndexError):
@@ -55,3 +50,24 @@ class Wallet:
         except (IOError, IndexError):
             print('Loading wallet failed...')
             return False
+
+    @staticmethod
+    def verify_transaction(transaction):
+        """
+        Verify signature of transaction
+        """
+        public_key = RSA.importKey(binascii.unhexlify(transaction.sender))
+        verifier = PKCS1_v1_5.new(public_key)
+        h = SHA256.new((str(transaction.sender) + str(transaction.recipient) + str(transaction.amount)).encode('utf8'))
+        return verifier.verify(h, binascii.unhexlify(transaction.signature))
+    
+    def sign_transaction(self, sender, recipient, amount):
+        """
+        Sign a transaction and return the signature
+        RSA is a cryptography algorithm
+        binascii.hexlify is used to convert binary data to hexadecimal representation
+        """
+        signer = PKCS1_v1_5.new(RSA.importKey(binascii.unhexlify(self.private_key)))
+        h = SHA256.new((str(sender) + str(recipient) + str(amount)).encode('utf8'))
+        signature = signer.sign(h)
+        return binascii.hexlify(signature).decode('ascii')
