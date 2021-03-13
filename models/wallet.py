@@ -1,10 +1,12 @@
-
 #!/usr/bin/python3
+""" Wallet Modules that generates public private keys for each user """
+
 from Crypto.PublicKey import RSA
 from hashlib import sha256
 import binascii
-import Crypto.Random
+import secrets
 from Crypto.Signature import PKCS1_v1_5
+
 
 class Wallet:
 
@@ -15,13 +17,13 @@ class Wallet:
 
     def generate_RSA(self, bits=2048):
         '''
-    Generate an RSA keypair with an exponent of 65537 in PEM format
-    param: bits The key length in bits
-    Return private key and public key
+        Generate an RSA keypair with an exponent of 65537 in PEM format
+        param: bits The key length in bits
+        Return private key and public key
         '''
-        new_key = RSA.generate(bits, e=65537) 
-        self.public_key = new_key.publickey().exportKey("PEM") 
-        self.private_key = new_key.exportKey("PEM") 
+        new_key = RSA.generate(bits, e=secrets.randbelow(2048))
+        self.public_key = new_key.publickey().exportKey("PEM")
+        self.private_key = new_key.exportKey("PEM")
         return self.private_key, self.public_key
 
     def create_keys(self):
@@ -30,7 +32,7 @@ class Wallet:
         self.public_key = public_key
 
     def save_keys(self):
-        if self.public_key != None and self.private_key != None:
+        if self.public_key is not None and self.private_key is not None:
             try:
                 with open('wallet-{}.txt'.format(self.user_id), mode='wb') as f:
                     f.write(self.public_key)
@@ -53,4 +55,3 @@ class Wallet:
         except (IOError, IndexError):
             print('Loading wallet failed...')
             return False
-    
