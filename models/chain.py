@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 from block import Block
 from hashlib import sha256
+from wallet import Wallet
+wallet = Wallet("user_id")
+
 
 class BlockChain:
 
@@ -9,8 +12,8 @@ class BlockChain:
         self.transactions = [] #keeps all the completed transactions in the block .
         self.nodes = set()
         self.construct_genesis() #Create the first block .
-
-
+        self.id = wallet.user_id
+        
     def construct_genesis(self):
         self.construct_block(proof_nonce=0, prev_hash=0)
 

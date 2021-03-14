@@ -7,6 +7,7 @@ import binascii
 import secrets
 from Crypto.Signature import PKCS1_v1_5
 import Crypto.Random
+from uuid import uuid4
 
 
 class Wallet:
@@ -14,7 +15,7 @@ class Wallet:
     def __init__(self, user_id):
         self.private_key = None
         self.public_key = None
-        self.user_id = user_id
+        self.user_id = user_id + "-" + str(uuid4())
 
     def generate_RSA(self):
         private_key = RSA.generate(1024, Crypto.Random.new().read)
