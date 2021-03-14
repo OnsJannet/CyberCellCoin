@@ -16,6 +16,7 @@ class Transaction:
         self.amount = amount
         self.signature = signature
 
+
     def validate(self):
         """
         Checks if a transaction is valid

@@ -29,6 +29,7 @@ class Block:
         self.data = data
         self.timestamp = str(datetime.now())
 
+
     @property
     def calculate_hash(self):
         """

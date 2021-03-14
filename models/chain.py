@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 from block import Block
 from hashlib import sha256
-from wallet import Wallet
-wallet = Wallet("user_id")
+
 
 
 class BlockChain:
@@ -12,10 +11,21 @@ class BlockChain:
         self.transactions = [] #keeps all the completed transactions in the block .
         self.nodes = set()
         self.construct_genesis() #Create the first block .
-        self.id = wallet.user_id
+        self.wallets = {}
         
     def construct_genesis(self):
-        self.construct_block(proof_nonce=0, prev_hash=0)
+        block = Block(
+            index=len(self.chain),
+            proof_nonce=0,
+            prev_hash=0,
+            data=self.transactions)
+        self.transactions = []
+
+        self.chain.append(block)
+        return block
+
+    def add_wallet(self, wallet):
+        self.wallets[wallet.user_id] = 0
 
     def construct_block(self, proof_nonce, prev_hash):
         """
@@ -81,7 +91,7 @@ class BlockChain:
     def verifying_proof(last_proof, proof):
         #verifying the proof: does hash(last_proof, proof) contain 4 leading zeroes?
 
-        guess = f'{last_proof}{proof}'.encode()
+        guess = '{last_proof}{proof}'.encode()
         guess_hash = sha256(guess).hexdigest()
         return guess_hash[:4] == "0000"
 

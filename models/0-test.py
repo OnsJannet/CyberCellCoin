@@ -70,4 +70,7 @@ print("***Transaction seccessfully executed***")
 print("###############################################\n")
 print("***Mining CyberCellCoin has been successful***")
 print("Blockchain Records Status :")
-print(blockchain.chain)
+
+wallet = Wallet("Abdou")
+blockchain.add_wallet(wallet)
+print(blockchain.wallets)
