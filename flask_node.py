@@ -16,8 +16,8 @@ def node():
 def create_wallet(user_id):
     wallet = Wallet(user_id)
     wallet.create_keys()
-    f = wallet.save_keys()
-    return send_file(f.name , as_attachment=True)
+    res = {'User': wallet.user_id, 'Private': wallet.private_key, 'Public': wallet.public_key}
+    return res
 
 @app.route('/wallet/<user_id>', methods=['GET'])
 def load_wallet(user_id):
