@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ Starts a Flash Web Application """
-from flask import Flask, send_file
+from flask import Flask, send_file, jsonify, request
 from models.wallet import Wallet
 from models.chain import BlockChain
-
-
+import requests
+import json
 app = Flask(__name__)
 bch = BlockChain()
 
@@ -29,10 +29,18 @@ def load_wallet(user_id):
     if user_id in late.data['Wallets']:
         return late.data['Wallets'][user_id]
     return "No wallet"
-
-
-
     
+
+@app.route('/blockchain', methods=['GET'], strict_slashes=True)
+def get_blockchain():
+    x = json.dumps(str(bch.chain))
+    
+    return jsonify(x)
+
+
+
+
+
 if __name__ == "__main__":
     """ Main Function """
     app.run(host='0.0.0.0', port=5000)
