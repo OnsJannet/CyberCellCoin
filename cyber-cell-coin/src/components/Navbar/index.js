@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars } from 'react-icons/fa';
+import {FaBars} from 'react-icons/fa'
 import{
     Nav, 
     NavbarContainer, 
@@ -25,16 +25,16 @@ const Navbar = () => {
                     </MobileIcon>
                     <NavMenu>
                         <NavItem>
-                            <NavLinks to='Home'>Home</NavLinks>
+                            <NavLinks to='home'>Home</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to='OverView'>OverView</NavLinks>
+                            <NavLinks to='overView'>OverView</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to='Team'>Team</NavLinks>
+                            <NavLinks to='team'>Team</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to='Howitworks'>How it works</NavLinks>
+                            <NavLinks to='howitworks'>How it works</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to='signup'>Sign UP</NavLinks>
@@ -50,4 +50,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar
+export default Navbar;

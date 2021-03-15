@@ -4,7 +4,7 @@ import {SidebarContainer,
         CloseIcon,
         SidebarWrapper,
         SidebarMenu,
-        SideBarLink,
+        SidebarLink,
         SideBtnWrap,
         SidebarRoute}
 from './SidebarElements';
@@ -17,21 +17,11 @@ const Sidebar = () => {
             </Icon> 
             <SidebarWrapper>
                 <SidebarMenu>
-                    <SideBarLink to="home">
-                        Home
-                    </SideBarLink>
-                    <SideBarLink to="overView">
-                        OverView
-                    </SideBarLink>
-                    <SideBarLink to="team">
-                        Team
-                    </SideBarLink>
-                    <SideBarLink to="howitworks">
-                        How It Works
-                    </SideBarLink>
-                    <SideBarLink to="signup">
-                        Sign UP
-                    </SideBarLink>
+                    <SidebarLink to='home'>Home</SidebarLink>
+                    <SidebarLink to='overView'>OverView</SidebarLink>
+                    <SidebarLink to='team'>Team</SidebarLink>
+                    <SidebarLink to='howitworks'>How It Works</SidebarLink>
+                    <SidebarLink to='signup'>Sign UP</SidebarLink>
                 </SidebarMenu>
                 <SideBtnWrap>
                     <SidebarRoute to="/signin">Sign In</SidebarRoute>
@@ -41,4 +31,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar
+export default Sidebar;
