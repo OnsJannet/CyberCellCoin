@@ -15,10 +15,9 @@ export const SidebarContainer = styled.aside`
     top: 0;
     left: 0;
     transition: 0.3s ease-in-out;
-    /* if statement if the sidebar is actually there (? = true) (: = else)*/
-    /*opacity: ${({isOpen}) => (isOpen ? '100%' : '0')};
-    top: ${({isOpen}) => (isOpen ? '0' : '-100')}; */
-    top; 0;
+    opacity: ${({isOpen}) => (isOpen ? '100%' : '0')};
+    top: ${({isOpen}) => (isOpen ? '0' : '-100')};
+    
 `;
 
 export const CloseIcon = styled(FaTimes)`
@@ -89,7 +88,7 @@ export const SidebarRoute= styled(LinkRouter)`
     transition: 0.2s ease-in-out;
     text-decoration: none;
 
-    &hover {
+    &:hover {
         transition: all 0.2s ease-in-out
         background: #fff;
         color: #010606;
