@@ -13,8 +13,7 @@ from uuid import uuid4
 class Wallet:
 
     def __init__(self, user_id):
-        self.private_key = None
-        self.public_key = None
+        self.balance = "00"
         self.user_id = user_id + "-" + str(uuid4())
 
     def generate_RSA(self):
@@ -72,3 +71,7 @@ class Wallet:
         h = SHA256.new((str(sender) + str(recipient) + str(amount)).encode('utf8'))
         signature = signer.sign(h)
         return binascii.hexlify(signature).decode('ascii')
+
+    def to_dict(self):
+        return ({"user_id" : self.user_id, "balance": self.balance})
+

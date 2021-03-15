@@ -2,10 +2,11 @@
 """ Starts a Flash Web Application """
 from flask import Flask, send_file
 from models.wallet import Wallet
+from models.chain import BlockChain
 
 
 app = Flask(__name__)
-
+bch = BlockChain()
 
 @app.route('/', strict_slashes=False)
 def node():
@@ -15,17 +16,23 @@ def node():
 @app.route('/wallet/<user_id>', methods=['POST'])
 def create_wallet(user_id):
     wallet = Wallet(user_id)
-    wallet.create_keys()
-    res = {'User': wallet.user_id, 'Private': wallet.private_key, 'Public': wallet.public_key}
-    return res
+    wallets = bch.latest_block.data["Wallets"].copy()
+    wallets[wallet.user_id] = "00"
+    late = bch.latest_block
+    bch.construct_block(late.proof_nonce, late.prev_hash, [], wallets)
+    print(bch.chain)
+    return wallet.user_id
 
 @app.route('/wallet/<user_id>', methods=['GET'])
 def load_wallet(user_id):
-    wallet = Wallet(user_id)
-    wallet.load_keys()
-    res = {'User': wallet.user_id, 'Private': wallet.private_key, 'Public': wallet.public_key}
-    return res
+    late = bch.latest_block
+    if user_id in late.data['Wallets']:
+        return late.data['Wallets'][user_id]
+    return "No wallet"
 
+
+
+    
 if __name__ == "__main__":
     """ Main Function """
     app.run(host='0.0.0.0', port=5000)

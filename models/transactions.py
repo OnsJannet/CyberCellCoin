@@ -14,7 +14,6 @@ class Transaction:
         self.sender = sender
         self.recipient = recipient
         self.amount = amount
-        self.signature = signature
 
 
     def validate(self):
@@ -30,4 +29,4 @@ class Transaction:
         return True
 
     def to_dict(self):
-        return ordreddict([('sender', self.sender), ('recipient', self.recipient), ('amount', self.amount)])
+        return ([('sender', self.sender.user_id), ('recipient', self.recipient.user_id), ('amount', self.amount)])

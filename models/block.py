@@ -5,7 +5,7 @@ from hashlib import sha256
 
 class Block:
 
-    def __init__(self, index, proof_nonce, prev_hash, data, timestamp=None):
+    def __init__(self, index, proof_nonce, prev_hash, data, wallets, timestamp=None):
         """ 
             Args :
             self :  refers to the instance of the Block class,\
@@ -26,7 +26,7 @@ class Block:
         self.index = index
         self.proof_nonce = proof_nonce
         self.prev_hash = prev_hash
-        self.data = data
+        self.data = {'Transaction':data , 'Wallets':wallets}
         self.timestamp = str(datetime.now())
 
 
@@ -40,6 +40,10 @@ class Block:
                                               self.timestamp)
 
         return sha256(block_of_string.encode()).hexdigest()
+
+
+
+        return True
 
     def __repr__(self):
         return "Index : {}\n - Nonce : {}\n - Previous Hash : {}\n - TRANSACTION : {}\n - Time : {}\n".format(self.index, self.proof_nonce,

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-from block import Block
 from hashlib import sha256
+from models.block import Block
 
 
 
@@ -8,26 +8,25 @@ class BlockChain:
 
     def __init__(self):
         self.chain = [] #keeps all blocks .
-        self.transactions = [] #keeps all the completed transactions in the block .
+        #self.transactions = [] #keeps all the completed transactions in the block .
         self.nodes = set()
         self.construct_genesis() #Create the first block .
-        self.wallets = {}
         
     def construct_genesis(self):
         block = Block(
             index=len(self.chain),
             proof_nonce=0,
             prev_hash=0,
-            data=self.transactions)
-        self.transactions = []
+            data=[], wallets={})
+        #self.transactions = []
 
         self.chain.append(block)
         return block
 
-    def add_wallet(self, wallet):
-        self.wallets[wallet.user_id] = 0
+   # def add_wallet(self, wallet):
+       # self.wallets[wallet.user_id] = 0
 
-    def construct_block(self, proof_nonce, prev_hash):
+    def construct_block(self, proof_nonce, prev_hash, transactions, wallets):
         """
         creating new blocks in the blockchain.
         Args :
@@ -36,12 +35,19 @@ class BlockChain:
             prev_hash : last hash from the previous block
 
         """
+        a = self.latest_block.data["Wallets"].copy()
+        for x, y in wallets.items():
+            a[x] = y
+
+        b = self.latest_block.data["Transaction"].copy()
+        b.append(transactions)
         block = Block(
             index=len(self.chain),
             proof_nonce=proof_nonce,
             prev_hash=prev_hash,
-            data=self.transactions)
-        self.transactions = []
+            data=b, 
+            wallets=a)
+       # self.transactions = []
 
         self.chain.append(block)
         return block
@@ -67,12 +73,7 @@ class BlockChain:
 
         return True
 
-    def add_transaction(self, sender, recipient, amount): #New
-        self.transactions.append({'sender': sender,
-                                  'recipient': recipient,
-                                  'amount': amount,
-                                  })
-        return True
+
     
     @staticmethod
     def proof_of_work(last_proof):
