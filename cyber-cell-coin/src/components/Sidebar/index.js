@@ -17,11 +17,11 @@ const Sidebar = ({isOpen, toggle}) => {
             </Icon> 
             <SidebarWrapper>
                 <SidebarMenu>
-                    <SidebarLink to='home'>Home</SidebarLink>
-                    <SidebarLink to='overView'>OverView</SidebarLink>
-                    <SidebarLink to='team'>Team</SidebarLink>
-                    <SidebarLink to='howitworks'>How It Works</SidebarLink>
-                    <SidebarLink to='signup'>Sign UP</SidebarLink>
+                    <SidebarLink to='home' onClick={toggle}>Home</SidebarLink>
+                    <SidebarLink to='overView' onClick={toggle}>OverView</SidebarLink>
+                    <SidebarLink to='team' onClick={toggle}>Team</SidebarLink>
+                    <SidebarLink to='howitworks' onClick={toggle}>How It Works</SidebarLink>
+                    <SidebarLink to='signup' onClick={toggle}>Sign UP</SidebarLink>
                 </SidebarMenu>
                 <SideBtnWrap>
                     <SidebarRoute to="/signin">Sign In</SidebarRoute>
