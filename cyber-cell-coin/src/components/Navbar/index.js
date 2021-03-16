@@ -14,7 +14,9 @@ from './NavbarElemnts';
 
 
 
-const Navbar = ({ toggle }) => {
+
+const Navbar = ({toggle}) => {
+    
     return (
         <>
             <Nav>
