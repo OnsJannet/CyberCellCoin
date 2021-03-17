@@ -5,9 +5,18 @@ from flask import Flask, render_template, flash, redirect, url_for, session, req
 from passlib.hash import sha256_crypt
 from flask_mysqldb import MySQL
 from functools import wraps
-from models.engine import manage_db
 from models.engine.db_storage import *
 from forms import *
+
+
+from flask import Flask, send_file, request, jsonify
+import requests
+import json
+import copy
+from models.wallet import Wallet
+from models.chain import BlockChain
+from models.block import Block
+from uuid import uuid4
 
 #other dependencies
 import time
@@ -170,7 +179,123 @@ def dashboard():
 def index():
     return render_template('index.html')
 
+
+
+
+
+
+
+
+
+
+
+def sync_chain(address):
+    req = requests.get(address)
+    global CyberCellCoin
+    CyberCellCoin = BlockChain()
+    CyberCellCoin.nodes = ["http://0.0.0.0:8000/res"]
+    recived = req.json()
+    CyberCellCoin.chain =  []
+    empty = Block()
+    for index in range(len(recived)):
+        new = copy.copy(empty)
+        new.__dict__ = recived[index]
+        CyberCellCoin.add(new)
+    sync_blockchain(CyberCellCoin)
+
+def sync_nodes(address):
+    req = requests.get(address)
+    CyberCellCoin.nodes = req.json()
+
+
+@app.route('/chain', strict_slashes=False)
+def chain():
+    ls = []
+    for index in range(len(CyberCellCoin.chain)):
+        ls.append(CyberCellCoin.chain[index].__dict__)
+    return jsonify(ls)
+
+@app.route('/peers', strict_slashes=False)
+def peers():
+    return jsonify(CyberCellCoin.nodes)
+
+@app.route('/wallet/<user_id>', methods=['POST'])
+def wallet_create(user_id):
+    user_id = user_id + "-" + str(uuid4())
+    wallet = {"user_id": user_id, "balance": 0}
+    new = Block(wallets=wallet)
+    CyberCellCoin.add(new)
+
+    for index in range(len(CyberCellCoin.nodes)):
+        headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
+        url = CyberCellCoin.nodes[index]
+        url = url + "block"
+        data = CyberCellCoin.latest_block.__dict__
+        requests.post(url, json=data, headers=headers)
+
+    for index in range(len(CyberCellCoin.nodes)):
+        headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
+        url = CyberCellCoin.nodes[index]
+        url = url + "ping"
+        data = request.url_root
+        requests.post(url, json=data, headers=headers)
+
+    print(not (request.url_root in CyberCellCoin.nodes))
+    if (not (request.url_root in CyberCellCoin.nodes)):
+        CyberCellCoin.nodes.append(request.url_root)
+
+    return user_id
+
+
+@app.route('/ter/<sender_id>/<reciver_id>/<ammount>', methods=['POST'])
+def transaction_create(sender_id,reciver_id,ammount):
+    user_id = sender_id + "-" + str(uuid4())
+    transaction = {"From": sender_id,"To": reciver_id,"Ammount": ammount,"Time": "tawa"}
+    new_transaction = CyberCellCoin.latest_block.transaction.copy()
+    new_transaction.append(transaction)
+    new = Block(transaction=new_transaction)
+    CyberCellCoin.add(new)
+
+    for index in range(len(CyberCellCoin.nodes)):
+        headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
+        url = CyberCellCoin.nodes[index]
+        url = url + "block"
+        data = CyberCellCoin.latest_block.__dict__
+        requests.post(url, json=data, headers=headers)
+
+    for index in range(len(CyberCellCoin.nodes)):
+        headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
+        url = CyberCellCoin.nodes[index]
+        url = url + "ping"
+        data = request.url_root
+        requests.post(url, json=data, headers=headers)
+
+    print(not (request.url_root in CyberCellCoin.nodes))
+    if (not (request.url_root in CyberCellCoin.nodes)):
+        CyberCellCoin.nodes.append(request.url_root)
+    return user_id
+
+@app.route('/block', methods=['POST'])
+def recive_block():
+    block = request.json
+    recived = Block()
+    recived.__dict__ = block
+    print("Block has been recived")
+    CyberCellCoin.add(recived)
+    return request.json
+
+@app.route('/ping', methods=['POST'])
+def recive_peers():
+    recived = request.json
+    print("Peer has been recived")
+    if (not (recived in CyberCellCoin.nodes)):
+        CyberCellCoin.nodes.append(recived)
+    return request.json    
+
+
 #Run app
 if __name__ == '__main__':
+    sync_chain("http://0.0.0.0:8000/chain")
+    sync_nodes("http://0.0.0.0:8000/peers")
     app.secret_key = 'secret123'
-    app.run(debug = True)
+    app.run(host='0.0.0.0', port=5000)
