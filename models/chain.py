@@ -3,11 +3,12 @@
 
 from hashlib import sha256
 from models.block import Block
+from models.block import updatehash
 
 #to use sha256 hash for the blockchain
 
 
-class Blockchain():
+class BlockChain():
     """the number of zeros in front of each hash"""
     difficulty = 4
 
@@ -16,12 +17,14 @@ class Blockchain():
         restarts a new blockchain or the existing one upon initialization
         """
         self.chain = []
+        self.nodes = []
 
 
     def add(self, block):
         """
         add a new block to the chain
         """
+        block.previous_hash = block.hash()
         self.chain.append(block)
 
     def remove(self, block):
@@ -61,3 +64,7 @@ class Blockchain():
                 return False
 
         return True
+
+    @property
+    def latest_block(self):
+        return self.chain[-1]

@@ -23,8 +23,9 @@ class Block():
     """
     default data for block defined in constructor. Minimum specified should be number and data.
     """
-    def __init__(self, number=0, previous_hash="0"*64, data=None, nonce=0, timestamp=None):
-        self.data = data
+    def __init__(self, number=0, previous_hash="0"*64, transaction=None, wallets=None, nonce=0, timestamp=None):
+        self.transaction = transaction
+        self.wallets = wallets
         self.number = number
         self.previous_hash = previous_hash
         self.nonce = nonce
@@ -36,7 +37,8 @@ class Block():
         return updatehash(
             self.number,
             self.previous_hash,
-            self.data,
+            self.transaction,
+            self.wallets,
             self.nonce,
             self.timestamp
         )
@@ -45,11 +47,12 @@ class Block():
         """
         returns a string of the block's data. Useful for diagnostic print statements.
         """
-        return str("Block#: %s\nHash: %s\nPrevious: %s\nData: %s\nNonce: %s\n Time: %s" %(
+        return str("Block#: %s\nHash: %s\nPrevious: %s\ntransactions: %s\nwallets: %s\nNonce: %s\n Time: %s" %(
             self.number,
             self.hash(),
             self.previous_hash,
-            self.data,
+            self.transaction,
+            self.wallets,
             self.nonce,
             self.timestamp
             )
