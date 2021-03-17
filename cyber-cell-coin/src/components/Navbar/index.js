@@ -39,7 +39,7 @@ const Navbar = ({toggle}) => {
                             <NavLinks to='howitworks'>How it works</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to='signup'>Sign UP</NavLinks>
+                            <NavLinks to='signup'>Sign Up</NavLinks>
                         </NavItem>
                     </NavMenu>
                     <NavBtn>

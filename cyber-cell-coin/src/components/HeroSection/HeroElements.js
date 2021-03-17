@@ -35,8 +35,8 @@ export const HeroBg = styled.div`
     overflow: gidden;
 `;
 export const VideoBg = styled.video`
-    wifth: 100%
-    height: 100%
+    width: 100%;
+    height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
     background: #232a34;

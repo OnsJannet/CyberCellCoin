@@ -35,19 +35,19 @@ export const homeObjTwo = {
 };
 
 export const homeObjThree = {
-    id: 'Home',
-    lightBg: false,
-    LightText: true,
-    lightTextDesc: true,
-    topLine: 'Cyber Cell Coin',
-    headline: 'Unlimited Secure Transactions',
-    description: 'Get access to our exclusive app that allowys you to transfer ',
-    buttonLabel: 'Get started',
+    id: 'signup',
+    lightBg: true,
+    LightText: false,
+    lightTextDesc: false,
+    topLine: 'Join our Team',
+    headline: 'Creating an account is extremely easy',
+    description: "Get everything set up and ready in no time. All you need to do is add your information and you're ready to go",
+    buttonLabel: 'Start Now',
     imgStart: false,
     img: '/images/svg-3.svg',
-    alt: 'Blockchain',
-    dark: true,
-    primary: true,
-    darkText: false,
+    alt: 'Paper',
+    dark: false,
+    primary: false,
+    darkText: true,
 
 };
