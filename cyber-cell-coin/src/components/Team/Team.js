@@ -13,7 +13,7 @@ from './TeamElements'
 
 const Team = () => {
     return (
-        <TeamContainer id="Team">
+        <TeamContainer id="team">
             <TeamH1>Our Team</TeamH1>
                 <TeamWrapper>
                 <TeamCard>

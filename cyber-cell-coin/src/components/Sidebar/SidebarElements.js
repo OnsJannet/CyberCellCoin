@@ -31,7 +31,7 @@ export const Icon = styled.div`
     background: transparent;
     font-size: 2rem;
     cursor: pointer;
-    outlne: none;
+    outline: none;
 `;
 
 export const SidebarWrapper = styled.div`
