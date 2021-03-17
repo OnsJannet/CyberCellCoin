@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """ The "node" of the blockchain. Points to the previous block\
          by its unique hash in previous_hash. """
 
@@ -54,3 +55,18 @@ class Block():
             self.timestamp
             )
         )
+=======
+from datetime import datetime
+
+class Block:
+    def __init__(self, value):
+        self.block = self.create_block(value)
+
+    def create_block(self, value):
+        block = {'time': str(datetime.now()),
+                 'value': value}
+        return block
+
+    def dict_block(self):
+        return "###\ntime{}\nvalue{}\n###".format(self.block['time'],self.block['value'])
+>>>>>>> Front_OJ

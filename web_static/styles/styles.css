@@ -1,0 +1,113 @@
+/*-- Variables --*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*--Body--*/
+body {
+  background-color: #080023;
+  overflow: hidden;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  /*--Header--*/
+  /*-- Intoduction Section --*/
+}
+
+body header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px 60px;
+}
+
+body header .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+body header .navbar {
+  display: inline;
+}
+
+body header ul.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+body header .navbar li {
+  margin-right: 50px;
+}
+
+body header .navbar a {
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+body header .navbar li a:hover {
+  color: #cc0023;
+}
+
+body .presentation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .presentation .introduction {
+  display: -ms-grid;
+  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 40px 60px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .presentation .introduction .introduction_title {
+  font-family: "Poppins", sans-serif;
+  font-size: 35px;
+}
+
+body .presentation .introduction .introduction_paragraph {
+  text-align: start;
+  color: white;
+  margin: 50px 0px;
+  line-height: 1.6;
+  text-align: justify;
+  width: 40%;
+}
+
+body .presentation .introduction button {
+  padding: 10px 30px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 20px;
+}
+
+body .presentation .introduction button:hover {
+  color: #cc0023;
+  border: solid #cc0023;
+}
+/*# sourceMappingURL=styles.css.map */
