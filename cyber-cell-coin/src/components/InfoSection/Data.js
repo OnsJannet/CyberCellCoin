@@ -36,9 +36,9 @@ export const homeObjTwo = {
 
 export const homeObjThree = {
     id: 'Home',
-    lightBg: false,
-    LightText: true,
-    lightTextDesc: true,
+    lightBg: true,
+    LightText: false,
+    lightTextDesc: false,
     topLine: 'Cyber Cell Coin',
     headline: 'Unlimited Secure Transactions',
     description: 'Get access to our exclusive app that allowys you to transfer ',
@@ -46,8 +46,8 @@ export const homeObjThree = {
     imgStart: false,
     img: '/images/svg-3.svg',
     alt: 'Blockchain',
-    dark: true,
-    primary: true,
-    darkText: false,
+    dark: false,
+    primary: false,
+    darkText: true,
 
 };
