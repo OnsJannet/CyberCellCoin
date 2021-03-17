@@ -1,51 +1,56 @@
 #!/usr/bin/python3
-from datetime import datetime
+""" The "node" of the blockchain. Points to the previous block\
+         by its unique hash in previous_hash. """
+
+
 from hashlib import sha256
+from datetime import datetime
 
-
-class Block:
-
-    def __init__(self, index, proof_nonce, prev_hash, data, wallets, timestamp=None):
-        """ 
-            Args :
-            self :  refers to the instance of the Block class,\
-                    making it possible to access the methods and attributes\
-                    associated with the class .
-            index : 
-                    keeps track of the position of the block within the blockchain .
-            proof_nonce :
-                    the number produced during the creation of a new block (Mining) .
-            prev_hash :
-                    refers to the hash of the previous block within the chain .
-            data :
-                    gives a record of all transactions completed (Ledger) .
-            timestamp :
-                    put a timestamp for the transactions .
-            """
+"""Takes in any number of arguments and produces a sha256 hash as a result"""
+def updatehash(*args):
         
-        self.index = index
-        self.proof_nonce = proof_nonce
-        self.prev_hash = prev_hash
-        self.data = {'Transaction':data , 'Wallets':wallets}
+    hashing_text = ""
+    h = sha256()
+
+    #loop through each argument and hash
+    for arg in args:
+        hashing_text += str(arg)
+
+    h.update(hashing_text.encode('utf-8'))
+    return h.hexdigest()
+
+class Block():
+    """
+    default data for block defined in constructor. Minimum specified should be number and data.
+    """
+    def __init__(self, number=0, previous_hash="0"*64, data=None, nonce=0, timestamp=None):
+        self.data = data
+        self.number = number
+        self.previous_hash = previous_hash
+        self.nonce = nonce
         self.timestamp = str(datetime.now())
 
+    #returns a sha256 hash for the block's data. Function instead of variable in constructor
+    #to avoid corruption of the variable.
+    def hash(self):
+        return updatehash(
+            self.number,
+            self.previous_hash,
+            self.data,
+            self.nonce,
+            self.timestamp
+        )
 
-    @property
-    def calculate_hash(self):
+    def __str__(self):
         """
-        generate the hash of the blocks using the above values with the SHA-256 module .
+        returns a string of the block's data. Useful for diagnostic print statements.
         """
-        block_of_string = "{}{}{}{}{}".format(self.index, self.proof_nonce,
-                                              self.prev_hash, self.data,
-                                              self.timestamp)
-
-        return sha256(block_of_string.encode()).hexdigest()
-
-
-
-        return True
-
-    def __repr__(self):
-        return "Index : {}\n - Nonce : {}\n - Previous Hash : {}\n - TRANSACTION : {}\n - Time : {}\n".format(self.index, self.proof_nonce,
-                                               self.prev_hash, self.data,
-                                               self.timestamp)
+        return str("Block#: %s\nHash: %s\nPrevious: %s\nData: %s\nNonce: %s\n Time: %s" %(
+            self.number,
+            self.hash(),
+            self.previous_hash,
+            self.data,
+            self.nonce,
+            self.timestamp
+            )
+        )

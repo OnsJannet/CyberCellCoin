@@ -1,131 +1,63 @@
 #!/usr/bin/python3
+"""The "LinkedList" of the blocks-- a chain of blocks"""
+
 from hashlib import sha256
 from models.block import Block
 
+#to use sha256 hash for the blockchain
 
 
-class BlockChain:
+class Blockchain():
+    """the number of zeros in front of each hash"""
+    difficulty = 4
 
     def __init__(self):
-        self.chain = [] #keeps all blocks .
-        #self.transactions = [] #keeps all the completed transactions in the block .
-        self.nodes = set()
-        self.construct_genesis() #Create the first block .
-        
-    def construct_genesis(self):
-        block = Block(
-            index=len(self.chain),
-            proof_nonce=0,
-            prev_hash=0,
-            data=[], wallets={})
-        #self.transactions = []
-
-        self.chain.append(block)
-        return block
-
-   # def add_wallet(self, wallet):
-       # self.wallets[wallet.user_id] = 0
-
-    def construct_block(self, proof_nonce, prev_hash, transactions, wallets):
         """
-        creating new blocks in the blockchain.
-        Args :
-            index represents the length of the blockchain
-            proof_nonce : the number stored when executed the pow operation.
-            prev_hash : last hash from the previous block
-
+        restarts a new blockchain or the existing one upon initialization
         """
-        a = self.latest_block.data["Wallets"].copy()
-        for x, y in wallets.items():
-            a[x] = y
+        self.chain = []
 
-        b = self.latest_block.data["Transaction"].copy()
-        b.append(transactions)
-        block = Block(
-            index=len(self.chain),
-            proof_nonce=proof_nonce,
-            prev_hash=prev_hash,
-            data=b, 
-            wallets=a)
-       # self.transactions = []
 
+    def add(self, block):
+        """
+        add a new block to the chain
+        """
         self.chain.append(block)
-        return block
-    @property
-    def latest_block(self):
-        return self.chain[-1]
+
+    def remove(self, block):
+        """
+        remove a block from the chain
+        """
+        self.chain.remove(block)
 
     
-    @staticmethod
-    def check_validity(block, prev_block):
-        if prev_block.index + 1 != block.index:
-            return False
+    def mine(self, block):
+        """
+        find the nonce of the block that satisfies the difficulty and add to chain.
+        attempt to get the hash of the previous block.
+        this should raise an IndexError if this is the first block.
+        """
+        try: block.previous_hash = self.chain[-1].hash()
+        except IndexError: pass
 
-        elif prev_block.calculate_hash != block.prev_hash:
-            return False
-
-        elif not BlockChain.verifying_proof(block.proof_nonce,
-                                            prev_block.proof_nonce):
-            return False
-
-        elif block.timestamp <= prev_block.timestamp:
-            return False
-
-        return True
-
-
-    
-    @staticmethod
-    def proof_of_work(last_proof):
-        new_nonce = 1
-        check_nonce = False
-        while check_nonce is False:
-            hash_operation = sha256(str(new_nonce**2 - last_proof**2).encode()).hexdigest()
-            if hash_operation[:4] == '0000':
-                check_nonce = True
+        #loop until nonce that satisifeis difficulty is found
+        while True:
+            if block.hash()[:self.difficulty] == "0" * self.difficulty:
+                self.add(block); break
             else:
-                new_nonce += 1
-        last_proof = new_nonce
-        return last_proof
+                #increase the nonce by one and try again
+                block.nonce += 1
 
-    @staticmethod
-    def verifying_proof(last_proof, proof):
-        #verifying the proof: does hash(last_proof, proof) contain 4 leading zeroes?
+    def isValid(self):
+        """
+        check if blockchain is valid
+        loop through blockchain
+        """
+        for i in range(1,len(self.chain)):
+            _previous = self.chain[i].previous_hash
+            _current = self.chain[i-1].hash()
+            #compare the previous hash to the actual hash of the previous block
+            if _previous != _current or _current[:self.difficulty] != "0"*self.difficulty:
+                return False
 
-        guess = '{last_proof}{proof}'.encode()
-        guess_hash = sha256(guess).hexdigest()
-        return guess_hash[:4] == "0000"
-
-    def block_mining(self, details_miner):
-
-        self.new_data(
-            sender="0",  #it implies that this node has created a new block
-            receiver=details_miner,
-            quantity=
-            1,  #creating a new block (or identifying the proof number) is awarded with 1
-        )
-
-        last_block = self.latest_block
-
-        last_proof_nonce = last_block.proof_nonce
-        proof_nonce = self.proof_of_work(last_proof_nonce)
-
-        last_hash = last_block.calculate_hash
-        block = self.construct_block(proof_nonce, last_hash)
-
-        return vars(block)
-
-    def create_node(self, address):
-        self.nodes.add(address)
         return True
-
-    @staticmethod
-    def obtain_block_object(block_data):
-        #obtains block object from the block data
-
-        return Block(
-            block_data['index'],
-            block_data['proof_nonce'],
-            block_data['prev_hash'],
-            block_data['data'],
-            timestamp=block_data['timestamp'])
