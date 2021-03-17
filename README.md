@@ -6,12 +6,11 @@ prupose a simple crypto-currency and blockchain network (please don't use it in 
 please use the following command to install Python Packages before you start
 $ pip3 install -r requirements.txt
 or you can also use pip3
-$ pip install Flask
-  pip install simple-crypt
+  `pip install Flask  pip install simple-crypt
   pip install passlib
   pip install flask_mysqldb #mySql must be installed, see below
   pip install functools
-  pip install wtforms
+  pip install wtforms`
 
 # Dependencies
 Flask
