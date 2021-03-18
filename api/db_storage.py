@@ -120,7 +120,7 @@ def isnewuser(username):
 
 def send_money(sender, recipient, amount):
     """
-    #send money from one user to another
+    send money from one user to another
     verify that the amount is an integer or floating value
     """
     try:

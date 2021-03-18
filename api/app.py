@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Flask web Application """
 
-from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
+from flask import Flask, render_template, flash, redirect, url_for, session, request, logging, jsonify
 from passlib.hash import sha256_crypt
 from flask_mysqldb import MySQL
 from functools import wraps
