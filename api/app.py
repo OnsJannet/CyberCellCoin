@@ -71,13 +71,13 @@ def register():
         email = form.email.data
         name = form.name.data
 
-        if isnewuser(username) and isnewtable(username):
-            password = form.password.data
-
 #######################################################################################
             new_name = requests.post(request.url_root + "wallet/" + username)
             username = new_name
 #######################################################################################
+        if isnewuser(username) and isnewtable(username):
+            password = form.password.data
+
             sql_raw(
                 "INSERT INTO users(name,email,username,password)" +
                 "VALUES(\"%s\", \"%s\", \"%s\", \"%s\")" % (
