@@ -273,8 +273,8 @@ def transaction_create(sender_id,reciver_id,ammount):
     new_transaction = CyberCellCoin.latest_block.data["transaction"].copy()
     new_transaction.append(transaction)
     old_wallets = CyberCellCoin.latest_block.data["wallets"].copy()
-    old_wallets[sender_id]["Ammount"] -= float(ammount)
-    old_wallets[reciver_id]["Ammount"] += float(ammount)
+    old_wallets[sender_id]["balance"] -= float(ammount)
+    old_wallets[reciver_id]["balance"] += float(ammount)
     data = {"transaction": new_transaction, "wallets": old_wallets}
     new = Block(data=data)
     CyberCellCoin.add(new)
