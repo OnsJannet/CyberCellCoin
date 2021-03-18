@@ -146,7 +146,7 @@ def transaction():
             send_money(session.get('username'),
                        form.username.data, form.amount.data)
 #######################################################################################
-        requests.post(request.url_root + "ter/" + session.get('username') + "/" + form.username.data + "/" + form.amount.data)
+            requests.post(request.url_root + "ter/" + session.get('username') + "/" + form.username.data + "/" + form.amount.data)
 #######################################################################################
             flash("Money Sent!", "success")
         except Exception as e:
@@ -167,6 +167,9 @@ def buy():
     if request.method == 'POST':
         # attempt to buy amoun
         send_money("BANK", session.get('username'), form.amount.data)
+#######################################################################################
+        requests.post(request.url_root + "ter/BANK/" + session.get('username') + "/" + form.amount.data)
+#######################################################################################
         flash("Purchase Successful!", "success")
         
 
