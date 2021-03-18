@@ -238,7 +238,7 @@ def peers():
 
 @app.route('/wallet/<user_id>', methods=['POST'])
 def wallet_create(user_id):
-    user_id = user_id + "-" + str(uuid4())
+    user_id = user_id
     wallets = CyberCellCoin.latest_block.data["wallets"].copy()
     wallets[user_id] = {"user_id": user_id, "balance": 0}
     old_transaction = CyberCellCoin.latest_block.data["transaction"].copy()
@@ -269,11 +269,12 @@ def wallet_create(user_id):
 
 @app.route('/ter/<sender_id>/<reciver_id>/<ammount>', methods=['POST'])
 def transaction_create(sender_id,reciver_id,ammount):
-    user_id = sender_id + "-" + str(uuid4())
     transaction = {"From": sender_id,"To": reciver_id,"Ammount": ammount,"Time": "tawa"}
     new_transaction = CyberCellCoin.latest_block.data["transaction"].copy()
     new_transaction.append(transaction)
     old_wallets = CyberCellCoin.latest_block.data["wallets"].copy()
+    old_wallets[sender_id] -= ammount
+    old_wallets[reciver_id] += ammount
     data = {"transaction": new_transaction, "wallets": old_wallets}
     new = Block(data=data)
     CyberCellCoin.add(new)
