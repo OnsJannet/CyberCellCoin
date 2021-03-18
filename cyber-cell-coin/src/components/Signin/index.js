@@ -1,6 +1,8 @@
 import React from 'react'
 import { FormButton, FormContent, FormH1, FormInput, FormLabel, FromWrap, Container, Icon, Form, Text } from './SigninElements'
 
+
+
 const SignIn = () => {
     return (
         <div>
@@ -17,6 +19,7 @@ const SignIn = () => {
                             <FormButton type='submit'>Continue</FormButton>
                             <Text>Forgot password</Text>
                             <Text>Don't Have An Account? Register Now </Text>
+                            <Text> Home Page</Text>
                         </Form>
                     </FormContent>
                 </FromWrap>

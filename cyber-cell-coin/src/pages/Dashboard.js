@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import ScrollToTop from '../components/ScrollToTop';
+import Dashboard from '../components/Dashboard';
 
-const Dashboard = () => {
+const DashboardPage = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+        <ScrollToTop />
+            <Dashboard />   
+        </>
     )
 }
 
-export default Dashboard
+export default DashboardPage;

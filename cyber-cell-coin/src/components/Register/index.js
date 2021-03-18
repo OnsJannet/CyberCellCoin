@@ -1,7 +1,16 @@
-import React from 'react'
+/*import React, {useState} from 'react'*/
 import { FormButton, FormContent, FormH1, FormInput, FormLabel, FromWrap, Container, Icon, Form, Text } from './RegisterElements'
 
-const SignIn = () => {
+const Register = () => {
+    /*const [usernameReg, setUsernameReg] = useState('')
+    const [PasswordReg, setPasswordReg] = useState('')
+    const [FullNameReg, setFullNameReg] = useState('')
+    const [EmailReg, setEmailReg] = useState('') */
+
+    /*onChange={(e)=> {setFullNameReg.target.value}}*/
+    /*onChange={(e)=> {setUsernameReg.target.value}}
+    onChange={(e)=> {setPasswordReg.target.value}}*/
+
     return (
         <div>
             <Container>
@@ -11,7 +20,7 @@ const SignIn = () => {
                         <Form action="#">
                             <FormH1>Register New Account</FormH1>
                             <FormLabel htmlFor='for' required>Full Name</FormLabel>
-                            <FormInput type='text' required />
+                            <FormInput type='text' required  /> 
                             <FormLabel htmlFor='for' required>Username</FormLabel>
                             <FormInput type='text' required />
                             <FormLabel htmlFor='for' required>Email</FormLabel>
@@ -30,4 +39,4 @@ const SignIn = () => {
     )
 }
 
-export default SignIn
+export default Register

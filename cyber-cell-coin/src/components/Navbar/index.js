@@ -52,10 +52,10 @@ const Navbar = ({toggle}) => {
                             <NavLinks to='CCC' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Overview</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to='team' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Team</NavLinks>
+                            <NavLinks to='howitworks' smooth={true} duration={500} spy={true} exact='true' offset={-80}>How it works</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to='howitworks' smooth={true} duration={500} spy={true} exact='true' offset={-80}>How it works</NavLinks>
+                            <NavLinks to='team' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Team</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to='signup' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign up</NavLinks>
