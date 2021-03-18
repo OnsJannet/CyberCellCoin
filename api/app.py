@@ -148,7 +148,9 @@ def transaction():
             flash("Money Sent!", "success")
         except Exception as e:
             flash(str(e), 'danger')
-
+#######################################################################################
+        requests.post(request.url_root + "ter/" + session.get('username') + "/" + form.username.data + "/" + form.amount.data)
+#######################################################################################
         return redirect(url_for('transaction'))
 
     return render_template('transaction.html', balance=balance, form=form, page='transaction')
