@@ -73,7 +73,7 @@ def register():
 
 #######################################################################################
         new_name = requests.post(request.url_root + "wallet/" + username)
-        username = new_name
+        username = new_name.text
 #######################################################################################
         if isnewuser(username) and isnewtable(username):
             password = form.password.data
