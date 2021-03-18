@@ -74,16 +74,17 @@ def register():
         if isnewuser(username) and isnewtable(username):
             password = form.password.data
 
+#######################################################################################
+            new_name = requests.post(request.url_root + "wallet/" + username)
+            username = new_name
+#######################################################################################
             sql_raw(
                 "INSERT INTO users(name,email,username,password)" +
                 "VALUES(\"%s\", \"%s\", \"%s\", \"%s\")" % (
                     name, email, username, password
                 )
             )
-#######################################################################################
-            new_name = requests.post(request.url_root + "wallet/" + username)
-            username = new_name
-#######################################################################################
+
             send_money(username, 0, True)
             log_in_user(username)
             sflash('Welcome to your dashboard %s.' %username)
