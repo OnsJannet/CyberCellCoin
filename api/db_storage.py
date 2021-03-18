@@ -129,7 +129,7 @@ def send_money(sender, recipient, amount):
         raise InvalidTransactionException("Invalid Transaction.")
 
     #verify that the user has positive balance (exception if it is the BANK)
-    if amount > get_balance(sender) or (sender == "BANK"):
+    if amount > get_balance(sender) and sender != "BANK":
         raise InsufficientFundsException("Insufficient Funds.")
 
     #verify that the user is not sending money to themselves or amount is less than or 0
@@ -144,7 +144,8 @@ def send_money(sender, recipient, amount):
     blockchain = get_blockchain()
     number = len(blockchain.chain) + 1
     data = "%s==>%s==>%s" %(sender, recipient, amount)
-
+    blockchain.mine(Block(number, data=data))
+    sync_blockchain(blockchain)
 
 def get_balance(username):
     """
