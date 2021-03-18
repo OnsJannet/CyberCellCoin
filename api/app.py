@@ -72,8 +72,8 @@ def register():
         name = form.name.data
 
 #######################################################################################
-            new_name = requests.post(request.url_root + "wallet/" + username)
-            username = new_name
+        new_name = requests.post(request.url_root + "wallet/" + username)
+        username = new_name
 #######################################################################################
         if isnewuser(username) and isnewtable(username):
             password = form.password.data
@@ -85,7 +85,7 @@ def register():
                 )
             )
 
-            send_money(username, 0, True)
+            send_money("BANK" ,username, 0)
             log_in_user(username)
             sflash('Welcome to your dashboard %s.' %username)
             return redirect(url_for('dashboard'))
