@@ -8,6 +8,8 @@ from models.wallet import Wallet
 from models.chain import Blockchain
 from models.block import Block
 from uuid import uuid4
+from sys import argv
+
 
 
 app = Flask(__name__)
@@ -19,7 +21,7 @@ def sync_chain(address):
     req = requests.get(address)
     global CyberCellCoin
     CyberCellCoin = Blockchain()
-    CyberCellCoin.nodes = ["http://0.0.0.0:8000/res"]
+    CyberCellCoin.nodes = [address + "/peers"]
     recived = req.json()
     CyberCellCoin.chain =  []
     empty = Block()
@@ -123,6 +125,7 @@ def recive_peers():
     return request.json    
 
 if __name__ == "__main__":
-    sync_chain("http://0.0.0.0:8000/chain")
-    sync_nodes("http://0.0.0.0:8000/peers")
-    app.run(host='0.0.0.0', port=5000)
+
+    sync_chain(argv[1] + "/chain")
+    sync_nodes(argv[1] + "/peers")
+    app.run(host='0.0.0.0', port=argv[2])
