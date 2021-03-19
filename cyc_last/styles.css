@@ -261,7 +261,7 @@
     font-size: 40px;
     text-transform: uppercase;
     margin-bottom: 32px;
-    text-align: center;
+
 }
 
 .main__content h2 {
@@ -289,6 +289,8 @@
     cursor: pointer;
     position: relative;
     outline: none;
+    margin: 2rem auto;
+    display: block;
     
 }
 
