@@ -26,7 +26,7 @@ class Blockchain():
         print(self.chain != [])
         if self.chain != []:
             block.previous_hash = self.latest_block.hash()
-            block.number = float(self.latest_block.number + 1)
+            block.number = int(self.latest_block.number + 1)
         self.chain.append(block)
 
 
