@@ -1,4 +1,5 @@
 import React from 'react'
+import {Nav, initializeIcons} from '@fluentui/re'
 import * as FaIcons from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import { BigContainer, SidebarContainer, ChartContainer } from './DashboardElements'

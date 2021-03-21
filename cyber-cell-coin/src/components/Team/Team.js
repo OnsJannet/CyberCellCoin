@@ -1,7 +1,7 @@
 import React from 'react'
-import Icon1 from '../../images/svg-1.svg'
-import Icon2 from '../../images/svg-2.svg'
-import Icon3 from '../../images/svg-3.svg'
+import Icon1 from '../../images/AH.png'
+import Icon2 from '../../images/AYH.png'
+import Icon3 from '../../images/OJ.png'
 import {TeamContainer,
         TeamH1,
         TeamH2,

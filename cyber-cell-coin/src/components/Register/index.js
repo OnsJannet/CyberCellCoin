@@ -1,5 +1,6 @@
 /*import React, {useState} from 'react'*/
 import { FormButton, FormContent, FormH1, FormInput, FormLabel, FromWrap, Container, Icon, Form, Text } from './RegisterElements'
+import Axios from 'axios'
 
 const Register = () => {
     /*const [usernameReg, setUsernameReg] = useState('')

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Video from '../../video/video.mp4';
+import Video from '../../video/intro.mp4';
 import {Button} from '../ButtonElement';
 import { HeroContainer, 
     HeroBg, 
@@ -26,9 +26,7 @@ const HeroSection = () => {
             <HeroContent>
                 <HeroH1> Trasactions Made Easy</HeroH1>
                 <HeroP> 
-                Cybercell is a degital asset designed to work as a medium of 
-                exchange that uses strong cryptography to secure financial transactions, 
-                control the creation of additional units, and verify the transfer of assets.
+
                 </HeroP>
                 <HeroBtnWrapper>
                     <Button 
