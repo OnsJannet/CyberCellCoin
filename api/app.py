@@ -169,6 +169,8 @@ def dashboard():
 def index():
     return render_template('index.html')
 
+
+
 #Run app
 if __name__ == '__main__':
     app.secret_key = 'secret123'

@@ -1,70 +1,106 @@
 <!DOCTYPE html>
-<!-- ADAPTED FROM TEMPLATE at https://unpkg.com/-->
-
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CyberCell coin</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename = 'images/favicon.ico') }}">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|PT+Serif:700" rel="stylesheet">
-    <link rel="stylesheet" href="/static/dist/css/style.css">
-    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCell</title>
+    <link rel="stylesheet" href="../static/css/index.css">
 </head>
-
-<body class="is-boxed has-animations" style="height: 100%;">
-    <div class="body-wrap boxed-container">
-        <header class="site-header">
-            <div class="container">
-                <div class="site-header-inner">
-                    <div class="brand header-brand">
-                        <h1 class="m-0">
-                            <a href="#">
-                                <img src="static/images/ccc.png" width="107.95" height="32" viewBox="0 0 32 32" style="float:left";>
-                                <defs>
-                                    <radialGradient cy="0%" fx="50%" fy="0%" r="100%" id="logo-gradient">
-                                        <stop stop-color="#FFF" offset="0%"></stop>
-                                        <stop stop-color="#FFF" stop-opacity=".24" offset="100%"></stop>
-                                    </radialGradient>
-                                </defs>
-                                <path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm0-10a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="url(#logo-gradient)" fill-rule="evenodd"></path>
-                            </a>
-                        </h1>
-                    </div>
-                    <ul class="header-links list-reset m-0">
-                        <li>
-                            <a href="/login">Login</a>
-                        </li>
-                        <li>
-                            <a class="button button-sm button-shadow" href="/register">Register</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-
-        <main>
-            <section class="hero text-light text-center">
-                <div class="container-sm">
-                    <div class="hero-inner">
-                        <h1 class="hero-title h2-mobile mt-0 is-revealing" style="visibility: visible;">CyberCell coin |CYC| Cryptocurrency</h1>
-                        <p class="hero-paragraph is-revealing" style="visibility: visible;">Cybercell is a degital asset designed to work as a medium of exchange that uses strong cryptography to secure financial transactions, control the creation of additional units, and verify the transfer of assets.</p>
-                        <p class="hero-cta is-revealing" style="visibility: visible;"><a class="button button-secondary button-shadow" href="/register">Get started now</a></p>
-
-                    </div>
-                </div>
-            </section>
-
-        </main>
-
-        <footer class="site-footer">
-            <div class="container">
-
-            </div>
-        </footer>
+<body>
+    <!--Navbar Section-->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="#home" id="navbar__logo"> CyberCell</a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="#home" class="navbar__links" id="home-page">Home</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#about" class="navbar__links" id="about-page">About</a>
+            </li>
+           <!-- <li class="navbar__item">
+                <a href="#team" class="navbar__links" id="team-page">Team</a>
+            </li> -->
+            <li class="navbar__btn">
+                <a href="/register" class="button" id="signup">Sign Up</a>
+            </li>
+        </ul>
     </div>
-    <script src="/static/dist/js/main.min.js"></script>
+</nav>
+<!-- Hero Section-->
+<div class="hero" id="home">
+    <div class="hero__container">
+            <!--<video class="videoInsert" src="../static/video/intro.mp4"  autoPlay loop muted type='video/mp4'></video>-->
+            <h1 class="hero__heading">Trasactions Made Easy</h1>
+            <p class="hero__description">Get access to our exclusive app that allowys you to transfer money easily in a very secure way.</p>
+            <button class="main__btn"><a href="/register"> Register</a></button>
+    </div>
+</div>
 
+<!-- About Section -->
+<div class="main" id="about">
+    <div class="main__container">
+        <div class="main__img__container">
+            <div class="main__img-card">
+            <img src="images/svg-2.svg" alt="">
+            </div>
+        </div>
+        <div class="main__content">
+            <h1>wat do we do?</h1>
+            <h2>Cybercell is a degital asset designed to work as a medium of 
+                exchange that uses strong cryptography to secure financial transactions, 
+                control the creation of additional units, and verify the transfer of assets.</h2>
+            <button class="main__btn"><a href="#">sign Up</a></button>
+        </div>
+    </div>
+</div>
+
+<!-- Team Section 
+<div class="team" id="team">
+    <h1> Our Team</h1>
+    <div class ="team_wrapper">
+        <div class ="team_card"></div>
+        <h2> Abderrahmen Hidoussi</h2>
+        <p>Backend</p>
+    </div>
+    <div class ="team_wrapper">
+        <div class ="team_card"></div>
+        <h2> Aymen Haddeji</h2>
+        <p>Backend</p>
+    </div>
+    <div class ="team_wrapper">
+        <div class ="team_card"></div>
+        <h2>Ons Jannet</h2>
+        <p>Frontend</p>
+    </div>
+</div> -->
+<!--Features Section
+<div class="main" id="sign-up">
+    <div class="main__container">
+        <div class="main__img__container">
+            <div class="main__content">
+                <h1>wat do we do?</h1>
+                <h2> we help ypu transfer crypto easly</h2>
+                <p> register to learn more about our services</p>
+                <button class="main__btn"><a href="#">sign Up</a></button>
+            </div>
+            <div class="main__img-card">
+            <img src="images/svg-2.svg" alt="">
+            </div>
+        </div>
+    </div>
+</div> -->
+<!--Footer-->
+<div class="footer__container">
+    <div class="footer_wrap"></div>
+        <p class="website-rights"> Copyright © CyberCell coin March-2021 </p>
+    </div>
+</div>
+<script src="./app.js"></script>
 </body>
 </html>
