@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberCell</title>
     <link rel="stylesheet" href="../static/css/index.css">
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!--Navbar Section-->
@@ -23,9 +24,9 @@
             <li class="navbar__item">
                 <a href="#about" class="navbar__links" id="about-page">About</a>
             </li>
-           <!-- <li class="navbar__item">
+           <li class="navbar__item">
                 <a href="#team" class="navbar__links" id="team-page">Team</a>
-            </li> -->
+            </li>
             <li class="navbar__btn">
                 <a href="/register" class="button" id="signup">Sign Up</a>
             </li>
@@ -34,10 +35,15 @@
 </nav>
 <!-- Hero Section-->
 <div class="hero" id="home">
+    <div class="twp-video-background">
+        <div class="twp-video-foreground">
+            <video autoplay muted loop id="myVideo">
+              <source src="../static/video/intro.mp4" type="video/mp4">
+            </video>
+        </div>
+      </div>
     <div class="hero__container">
-            <!--<video class="videoInsert" src="../static/video/intro.mp4"  autoPlay loop muted type='video/mp4'></video>-->
             <h1 class="hero__heading">Trasactions Made Easy</h1>
-            <p class="hero__description">Get access to our exclusive app that allowys you to transfer money easily in a very secure way.</p>
             <button class="main__btn"><a href="/register"> Register</a></button>
     </div>
 </div>
@@ -47,7 +53,7 @@
     <div class="main__container">
         <div class="main__img__container">
             <div class="main__img-card">
-            <img src="images/svg-2.svg" alt="">
+            <img src="../static/images/svg-2.svg" alt="">
             </div>
         </div>
         <div class="main__content">
@@ -55,52 +61,162 @@
             <h2>Cybercell is a degital asset designed to work as a medium of 
                 exchange that uses strong cryptography to secure financial transactions, 
                 control the creation of additional units, and verify the transfer of assets.</h2>
-            <button class="main__btn"><a href="#">sign Up</a></button>
+            <button class="main__btn"><a href="/register">sign Up</a></button>
         </div>
     </div>
 </div>
 
-<!-- Team Section 
-<div class="team" id="team">
-    <h1> Our Team</h1>
-    <div class ="team_wrapper">
-        <div class ="team_card"></div>
-        <h2> Abderrahmen Hidoussi</h2>
-        <p>Backend</p>
-    </div>
-    <div class ="team_wrapper">
-        <div class ="team_card"></div>
-        <h2> Aymen Haddeji</h2>
-        <p>Backend</p>
-    </div>
-    <div class ="team_wrapper">
-        <div class ="team_card"></div>
-        <h2>Ons Jannet</h2>
-        <p>Frontend</p>
-    </div>
-</div> -->
-<!--Features Section
-<div class="main" id="sign-up">
-    <div class="main__container">
-        <div class="main__img__container">
-            <div class="main__content">
-                <h1>wat do we do?</h1>
-                <h2> we help ypu transfer crypto easly</h2>
-                <p> register to learn more about our services</p>
-                <button class="main__btn"><a href="#">sign Up</a></button>
+<!---team section--->
+    <section id="team">
+        <!--heading---->
+        <strong class="team-heading">Our Team</strong>
+        <!--team-container---------->
+        <div class="team-box-container">
+            <!--member-box-1--->
+            <div class="member-box member-1">
+                <!--img---->
+                <div class="member-img">
+                    <!--front-img-->
+                    <img src="../static/images/Abdou.jpg">
+                    <!--hover-img-->
+                    <img class="hover-img" src="../static/images/Abdou.jpg">
+                </div>
+                <!--text----->
+                <div class="member-name">
+                    <h3>Abderrahmen Hidoussi</h3>
+                    <h5>Co-founder | Blockchain Developper</h5>
+                </div>
             </div>
-            <div class="main__img-card">
-            <img src="images/svg-2.svg" alt="">
+            <!--member-box-2--->
+            <div class="member-box member-2">
+                <!--img---->
+                <div class="member-img">
+                    <!--front-img-->
+                    <img src="../static/images/Aymen.jpg">
+                    <!--hover-img-->
+                    <img class="hover-img" src="../static/images/Aymen.jpg">
+                </div>
+                <!--text----->
+                <div class="member-name">
+                    <h3>Aymen Haddeji</h3>
+                    <h5>Co-founder | Blockchain Developper</h5>
+                </div>
             </div>
-        </div>
-    </div>
-</div> -->
+            <!--member-box-3--->
+            <div class="member-box member-3">
+                <!--img---->
+                <div class="member-img">
+                    <!--front-img-->
+                    <img src="../static/images/Ons.jpg">
+                    <!--hover-img-->
+                    <img class="hover-img" src="../static/images/Ons.jpg">
+                </div>
+                <!--text----->
+                <div class="member-name">
+                    <h3>Ons Jannet</h3>
+                    <h5>Co-founder | Blockchain Developper</h5>
+                </div>
+            </div>
+            <!--detail-box-1----------------------------->
+            <div class="detail-box-1">
+                <div class="member-detail-box">
+                    <!--img---->
+                    <div class="detail-box-img">
+                        <img src="MG_0669.jpg">
+                    </div>
+                    <!--text-->
+                    <div class="detail-box-text">
+                        <!--cancel-btn---->
+                        <a href="javascript:void(0);" class="cancel">
+                            <i class="fas fa-times"></i>
+                        </a>
+                        <!--name-->
+                        <a href="#" class="detail-name">Abderrahmen Hidoussi</a>
+                        <!--social-links-->
+                        <div class="member-social-links">
+                            <!--facebook-->
+                            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <!--instagram-->
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <!--position---->
+                        <h5 class="position">Co-founder | Blockchain Developper</h5>
+                        <!--details--->
+                        <p>The man who pulls all the strings in making all your ideas come to live! If he says, its possible - it's possible. He's very dependable, energetic, humourous and passionate. Loves leading projects with full stack development skills on the side. Share your ideas with him and he will make it happen.</p>
+                        <!--view-btn---->
+                        <a href="https://github.com/Abdou-Hidoussi" target="_blank" class="view-work-btn">View Work</a>
+                    </div>
+                </div>
+            </div>
+            <!--detail-box-2---------------------------->
+            <div class="detail-box-2">
+                <div class="member-detail-box">
+                    <!--img---->
+                    <div class="detail-box-img">
+                        <img src="MG_0669.jpg">
+                    </div>
+                    <!--text-->
+                    <div class="detail-box-text">
+                        <!--cancel-btn---->
+                        <a href="javascript:void(0);" class="cancel">
+                            <i class="fas fa-times"></i>
+                        </a>
+                        <!--name-->
+                        <a href="#" class="detail-name">Aymen Haddeji</a>
+                        <!--social-links-->
+                        <div class="member-social-links">
+                            <!--facebook-->
+                            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <!--instagram-->
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <!--position---->
+                        <h5 class="position">Co-founder | Blockchain Developper</h5>
+                        <!--details--->
+                        <p>The man who pulls all the strings in making all your ideas come to live! If he says, its possible - it's possible. He's very dependable, energetic, humourous and passionate. Loves leading projects with full stack development skills on the side. Share your ideas with him and he will make it happen.</p>
+                        <!--view-btn---->
+                        <a href="https://github.com/Aymen-haddaji-hub"  target="_blank" class="view-work-btn">View Work</a>
+                    </div>
+                </div>
+            </div>
+            <!--detail-box-3----------------------------->
+            <div class="detail-box-3">
+                <div class="member-detail-box">
+                    <!--img---->
+                    <div class="detail-box-img">
+                        <img src="MG_0669.jpg">
+                    </div>
+                    <!--text-->
+                    <div class="detail-box-text">
+                        <!--cancel-btn---->
+                        <a href="javascript:void(0);" class="cancel">
+                            <i class="fas fa-times"></i>
+                        </a>
+                        <!--name-->
+                        <a href="#" class="detail-name">Ons Jannet</a>
+                        <!--social-links-->
+                        <div class="member-social-links">
+                            <!--facebook-->
+                            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <!--instagram-->
+                            <a href="https://www.instagram.com/onssheckler/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <!--position---->
+                        <h5 class="position">Co-founder | Blockchain Developper</h5>
+                        <!--details--->
+                        <p>The man who pulls all the strings in making all your ideas come to live! If he says, its possible - it's possible. He's very dependable, energetic, humourous and passionate. Loves leading projects with full stack development skills on the side. Share your ideas with him and he will make it happen.</p>
+                        <!--view-btn---->
+                        <a href="https://github.com/OnsJannet"  target="_blank" class="view-work-btn">View Work</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+        <!--using JQuery--------------->
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="../static/js/index.js"></script>
 <!--Footer-->
-<div class="footer__container">
-    <div class="footer_wrap"></div>
-        <p class="website-rights"> Copyright © CyberCell coin March-2021 </p>
-    </div>
-</div>
-<script src="./app.js"></script>
+
+
+
 </body>
 </html>
