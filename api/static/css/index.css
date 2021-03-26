@@ -46,6 +46,9 @@
 
 .navbar__item {
     height: 80px;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .navbar__links {
@@ -87,6 +90,8 @@
     color: #0090ff;
     transition: all 0.3s ease;
 }
+
+
 
 @media screen and (max-width: 960px) {
     .navbar__container {
@@ -136,6 +141,8 @@
     .navbar__item{
         width: 100%;
     }
+
+
 
     .navbar__links{
         text-align: center;
@@ -230,7 +237,8 @@
 }
 
 .highlight {
-    border-bottom: 4px solid rgb(132, 0, 255);
+    border-bottom: 4px solid ;
+    color:#0090ff;
 }
 
 @media screen and (max-width: 768px){
@@ -422,6 +430,26 @@
 
 }
 
+@media (max-width: 768px) {
+  .main__btn {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+
+    position: flex;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .main__btn {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.2;
+    position: flex;
+
+  }
+}
+
 
 
 /*Mobile Responsive*/ 
@@ -470,6 +498,7 @@
         width: 250px;
         height: 250px;
         }
+
     }
 
     .main__content h1 {
